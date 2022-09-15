@@ -333,7 +333,7 @@ def log(update, context):
 
 
 help_string = '''
-<b><a href='https://t.me/sahil_nolia'>Sahil NOlia</a></b> - The Ultimate Telegram MIrror-Leech Bot to Upload Your File & Link in Google Drive & Telegram
+<b><a href='https://t.me/sahil_nolia'>Sahil Nolia</a></b> - The Ultimate Telegram MIrror-Leech Bot to Upload Your File & Link in Google Drive & Telegram
 Choose a help category:
 '''
 
