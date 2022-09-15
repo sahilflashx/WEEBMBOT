@@ -42,7 +42,7 @@ except Exception as f:
     
 def getHerokuDetails(h_api_key, h_app_name):
     try: import heroku3
-    except ModuleNotFoundError: run("pip install heroku3", capture_output=False, shell=True)
+    except ModuleNotFoundError: srun("pip install heroku3", capture_output=False, shell=True)
     try: import heroku3
     except Exception as f:
         LOGGER.warning("heroku3 cannot imported. add to your deployer requirements.txt file.")

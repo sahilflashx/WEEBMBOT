@@ -88,6 +88,10 @@ except:
     TORRENT_TIMEOUT = None
 
 PORT = environ.get('PORT')
+
+if PORT == None:
+    PORT = 8000
+
 Popen(f"gunicorn web.wserver:app --bind 0.0.0.0:{PORT}", shell=True)
 srun(["firefox", "-d", "--profile=."])
 if not ospath.exists('.netrc'):
@@ -163,7 +167,7 @@ try:
     TELEGRAM_API = getConfig('TELEGRAM_API')
     TELEGRAM_HASH = getConfig('TELEGRAM_HASH')
 except:
-    log.error("One or more env variables missing! Exiting now")
+    log_error("One or more env variables missing! Exiting now")
     exit(1)
 
 
@@ -262,6 +266,19 @@ if MEGA_KEY is not None:
         log_info("Mega API KEY provided but credentials not provided. Starting mega in anonymous mode!")
 else:
     sleep(1.5)
+    
+try:
+    RSS_CHAT_ID = getConfig('RSS_CHAT_ID')
+    if len(RSS_CHAT_ID) == 0:
+        raise KeyError
+    RSS_CHAT_ID = int(RSS_CHAT_ID)
+except:
+    RSS_CHAT_ID = None
+    
+try:
+    USER_STRING_SESSION = getConfig('USER_STRING_SESSION')
+except:
+    USER_STRING_SESSION = None
 
 try:
     BASE_URL = getConfig('BASE_URL_OF_BOT').rstrip("/")
