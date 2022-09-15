@@ -5,10 +5,11 @@ from telegram.message import Message
 from telegram.error import RetryAfter
 from pyrogram.errors import FloodWait
 from os import remove
+from pyrogram import Client, enums
 
 from bot import AUTO_DELETE_MESSAGE_DURATION, LOGGER, status_reply_dict, status_reply_dict_lock, \
                 Interval, DOWNLOAD_STATUS_UPDATE_INTERVAL, RSS_CHAT_ID, bot, rss_session, \
-                AUTO_DELETE_UPLOAD_MESSAGE_DURATION, PICS
+                AUTO_DELETE_UPLOAD_MESSAGE_DURATION, PICS, TELEGRAM_API, TELEGRAM_HASH, USER_STRING_SESSION
 from bot.helper.ext_utils.bot_utils import get_readable_message, setInterval
 
 
@@ -95,7 +96,7 @@ async def sendRss_pyro(text: str):
         return await rss_session.send_message(RSS_CHAT_ID, text, disable_web_page_preview=True)
     except FloodWait as e:
         LOGGER.warning(str(e))
-        await asleep(e.value * 1.5)
+        await sleep(e.value * 1.5)
         return await sendRss(text)
     except Exception as e:
         LOGGER.error(str(e))

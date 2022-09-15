@@ -42,7 +42,7 @@ except Exception as f:
     
 def getHerokuDetails(h_api_key, h_app_name):
     try: import heroku3
-    except ModuleNotFoundError: run("pip install heroku3", capture_output=False, shell=True)
+    except ModuleNotFoundError: srun("pip install heroku3", capture_output=False, shell=True)
     try: import heroku3
     except Exception as f:
         LOGGER.warning("heroku3 cannot imported. add to your deployer requirements.txt file.")
@@ -262,7 +262,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         else:
             sendMarkup(start_string, context.bot, update.message, reply_markup)
     else:
-        text = f"Not Authorized user, deploy your own mirror bot"
+        text = f"You Are Not Authorized!"
         if PICS:
             sendPhoto(text, context.bot, update.message, random.choice(PICS), reply_markup)
         else:
@@ -333,7 +333,7 @@ def log(update, context):
 
 
 help_string = '''
-<b><a href='https://github.com/codewithweeb/mirror-with-weeb'>WeebZone</a></b> - The Ultimate Telegram MIrror-Leech Bot to Upload Your File & Link in Google Drive & Telegram
+<b><a href='https://t.me/sahil_nolia'>Sahil Nolia</a></b> - The Ultimate Telegram MIrror-Leech Bot to Upload Your File & Link in Google Drive & Telegram
 Choose a help category:
 '''
 

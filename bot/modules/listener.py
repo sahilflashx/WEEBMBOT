@@ -585,6 +585,7 @@ class MirrorLeechListener:
             update_all_messages()
 
     def onDownloadError(self, error):
+        reply_to = self.message.reply_to_message
         error = error.replace('<', ' ').replace('>', ' ')
         try:
             if AUTO_DELETE_UPLOAD_MESSAGE_DURATION != -1 and reply_to is not None:

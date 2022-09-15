@@ -163,7 +163,7 @@ try:
     TELEGRAM_API = getConfig('TELEGRAM_API')
     TELEGRAM_HASH = getConfig('TELEGRAM_HASH')
 except:
-    log.error("One or more env variables missing! Exiting now")
+    log_error("One or more env variables missing! Exiting now")
     exit(1)
 
 
@@ -262,6 +262,19 @@ if MEGA_KEY is not None:
         log_info("Mega API KEY provided but credentials not provided. Starting mega in anonymous mode!")
 else:
     sleep(1.5)
+    
+try:
+    RSS_CHAT_ID = getConfig('RSS_CHAT_ID')
+    if len(RSS_CHAT_ID) == 0:
+        raise KeyError
+    RSS_CHAT_ID = int(RSS_CHAT_ID)
+except:
+    RSS_CHAT_ID = None
+    
+try:
+    USER_STRING_SESSION = getConfig('USER_STRING_SESSION')
+except:
+    USER_STRING_SESSION = None
 
 try:
     BASE_URL = getConfig('BASE_URL_OF_BOT').rstrip("/")
@@ -643,22 +656,22 @@ except KeyError:
 try:
     AUTHOR_NAME = getConfig('AUTHOR_NAME')
     if len(AUTHOR_NAME) == 0:
-        AUTHOR_NAME = 'Karan'
+        AUTHOR_NAME = 'Sahil'
 except KeyError:
-    AUTHOR_NAME = 'Karan'
+    AUTHOR_NAME = 'Sahil'
 
 try:
     AUTHOR_URL = getConfig('AUTHOR_URL')
     if len(AUTHOR_URL) == 0:
-        AUTHOR_URL = 'https://t.me/WeebZone_updates'
+        AUTHOR_URL = 'https://t.me/sahil_nolia'
 except KeyError:
-    AUTHOR_URL = 'https://t.me/WeebZone_updates'
+    AUTHOR_URL = 'https://t.me/sahil_nolia'
 try:
     GD_INFO = getConfig('GD_INFO')
     if len(GD_INFO) == 0:
-        GD_INFO = 'Uploaded by WeebZone Mirror Bot'
+        GD_INFO = 'Uploaded by Sahil'
 except KeyError:
-    GD_INFO = 'Uploaded by WeebZone Mirror Bot'
+    GD_INFO = 'Uploaded by Sahil'
 try:
     DISABLE_DRIVE_LINK = getConfig('DISABLE_DRIVE_LINK')
     DISABLE_DRIVE_LINK = DISABLE_DRIVE_LINK.lower() == 'true'
@@ -667,9 +680,9 @@ except KeyError:
 try:
     TITLE_NAME = getConfig('TITLE_NAME')
     if len(TITLE_NAME) == 0:
-        TITLE_NAME = 'WeebZone'
+        TITLE_NAME = 'Sahil'
 except KeyError:
-    TITLE_NAME = 'WeebZone'
+    TITLE_NAME = 'Sahil'
 try:
     START_BTN1_NAME = getConfig('START_BTN1_NAME')
     START_BTN1_URL = getConfig('START_BTN1_URL')
@@ -677,7 +690,7 @@ try:
         raise KeyError
 except:
     START_BTN1_NAME = 'Master'
-    START_BTN1_URL = 'https://t.me/krn_adhikari'
+    START_BTN1_URL = 'https://t.me/sahil_nolia'
 
 try:
     START_BTN2_NAME = getConfig('START_BTN2_NAME')
