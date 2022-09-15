@@ -550,7 +550,7 @@ def main():
                                  try:
                                      bot.sendMessage(cid, msg, 'HTML', disable_web_page_preview=True)
                                  except Exception as e:
-                                     LOGGER.error(e)
+                                     LOGGER.error(e, "line 553 in main")
                              msg = ''
                 if '😎Restarted successfully❗' in msg and cid == chat_id:
                      bot.editMessageText(msg, chat_id, msg_id, parse_mode='HTML', disable_web_page_preview=True)
@@ -559,7 +559,7 @@ def main():
                     try:
                         bot.sendMessage(cid, msg, 'HTML', disable_web_page_preview=True)
                     except Exception as e:
-                        LOGGER.error(e)
+                        LOGGER.error(e, "line 562 in main")
 
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
@@ -573,7 +573,7 @@ def main():
             try:
                 bot.sendMessage(chat_id=id_, text=text, parse_mode=ParseMode.HTML)
             except Exception as e:
-                LOGGER.error(e)
+                LOGGER.error(e, "line 576 in main")
 
 
     start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
